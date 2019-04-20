@@ -1,0 +1,17 @@
+{
+  "gitzone": {
+    "module": {
+      "githost": "gitlab.com",
+      "gitscope": "gitzone",
+      "gitrepo": "tsbundle",
+      "shortDescription": "a bundler using rollup for painless bundling of web projects",
+      "npmPackagename": "@gitzone/tsbundle",
+      "license": "MIT",
+      "projectDomain": "git.zone"
+    }
+  },
+  "npmci": {
+    "npmGlobalTools": [],
+    "npmAccessLevel": "public"
+  }
+}
