@@ -7,9 +7,9 @@ import json from 'rollup-plugin-json'
 const pkg = require('./package.json')
 
 export default {
-  input: `src/index.ts`,
+  input: `ts_web/index.ts`,
   output: {
-		file: 'ts/index.ts',
+		file: 'dist/bundle.js',
     format: 'es',
 		sourcemap: true
 	},
