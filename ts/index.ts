@@ -25,7 +25,8 @@ const rollupOptions: plugins.rollup.RollupOptions = {
           experimentalDecorators: true,
           inlineSourceMap: true,
           noEmitOnError: true,
-          lib: ['es2016', 'es2017', 'dom'],
+          lib: ['es2017', 'dom'],
+          target: 'es2017',
           noImplicitAny: false
         }
       }
