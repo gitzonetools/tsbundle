@@ -23,7 +23,17 @@ export default {
     // Allow json resolution
     json(),
     // Compile TypeScript files
-    typescript({ useTsconfigDeclarationDir: true }),
+    typescript({ useTsconfigDeclarationDir: true, tsconfigOverride: {
+      compilerOptions: {
+        declaration: true,
+        emitDecoratorMetadata: true,
+        experimentalDecorators: true,
+        inlineSourceMap: true,
+        noEmitOnError: true,
+        lib: ['es2016', 'es2017', 'dom'],
+        noImplicitAny: false
+      }
+    } }),
     // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
     commonjs(),
     // Allow node_modules resolution, so you can use 'external' to control
