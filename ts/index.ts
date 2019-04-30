@@ -46,7 +46,17 @@ const rollupOptions: plugins.rollup.RollupOptions = {
     plugins.rollupBabel({
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       babelrc: false,
-      presets: [['@babel/preset-env', { modules: false }]]
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            modules: false,
+            targets: {
+              chrome: '41'
+            }
+          }
+        ]
+      ]
     })
   ]
 };
