@@ -11,8 +11,10 @@ const pkg = require('./package.json');
 export default {
   input: `ts_web/index.ts`,
   output: {
+    name: 'tsbundle',
+    // file: 'dist_web/bundle.js',
     file: 'dist_web/bundle.js',
-    format: 'es',
+    format: 'iife',
     sourcemap: true
   },
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
@@ -49,6 +51,10 @@ export default {
 
     // Resolve source maps to the original source
     sourceMaps(),
-    babel()
+    babel({
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      babelrc: false,
+      presets: [["@babel/es2015", { modules: false }]]
+    })
   ]
 };
