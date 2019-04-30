@@ -11,7 +11,7 @@ const pkg = require('./package.json');
 export default {
   input: `ts_web/index.ts`,
   output: {
-    file: 'dist/bundle.js',
+    file: 'dist_web/bundle.js',
     format: 'es',
     sourcemap: true
   },
