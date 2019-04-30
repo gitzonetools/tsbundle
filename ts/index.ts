@@ -44,6 +44,7 @@ const rollupOptions: plugins.rollup.RollupOptions = {
     // Resolve source maps to the original source
     plugins.rollupSourceMaps(),
     plugins.rollupBabel({
+      runtimeHelpers: true,
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       babelrc: false,
       presets: [
@@ -54,6 +55,14 @@ const rollupOptions: plugins.rollup.RollupOptions = {
             targets: {
               chrome: '41'
             }
+          }
+        ]
+      ],
+      plugins: [
+        [
+          '@babel/plugin-transform-runtime',
+          {
+            regenerator: true
           }
         ]
       ]
