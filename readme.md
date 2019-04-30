@@ -17,9 +17,17 @@ a bundler using rollup for painless bundling of web projects
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-prettier-ff69b4.svg)](https://prettier.io/)
 
 ## Usage
+
 Use TypeScript for best in class intellisense.
 
 tsbundle will bundle modern JavaScript websites in an Google Bot conformant way so things like AdSense do work.
+
+> MIT licensed | **&copy;** [Lossless GmbH](https://lossless.gmbh)
+> | By using this npm module you agree to our [privacy policy](https://lossless.gmbH/privacy.html)
+
+[![repo-footer](https://gitzone.gitlab.io/assets/repo-footer.svg)](https://maintainedby.lossless.com)
+
+For further information read the linked docs at the top of this readme.
 
 > MIT licensed | **&copy;** [Lossless GmbH](https://lossless.gmbh)
 | By using this npm module you agree to our [privacy policy](https://lossless.gmbH/privacy.html)

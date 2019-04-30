@@ -8,7 +8,7 @@
   "author": "Lossless GmbH",
   "license": "MIT",
   "scripts": {
-    "test": "(tstest test/)",
+    "test": "(tstest test/) && rollup -c rollup.config.js",
     "build": "(tsbuild)",
     "format": "(gitzone format)"
   },
