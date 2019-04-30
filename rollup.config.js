@@ -4,6 +4,7 @@ import sourceMaps from 'rollup-plugin-sourcemaps';
 import typescript from 'rollup-plugin-typescript2';
 import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
+import nodeResolve from 'rollup-plugin-node-resolve';
 
 const pkg = require('./package.json');
 
@@ -34,6 +35,7 @@ export default {
         noImplicitAny: false
       }
     } }),
+    nodeResolve(),
     // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
     commonjs(),
     // Allow node_modules resolution, so you can use 'external' to control
