@@ -39,7 +39,7 @@ export default {
     // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
     commonjs({
       namedExports: {
-          'node_modules/@pushrocks/smartstate/dist/index.js': ['SmartState']
+          'node_modules/@pushrocks/smartstate/dist/index.js': ['Smartstate']
       }
     }),
     // Allow node_modules resolution, so you can use 'external' to control
