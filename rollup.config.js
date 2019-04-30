@@ -54,7 +54,7 @@ export default {
     babel({
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       babelrc: false,
-      presets: [["@babel/es2015", { modules: false }]]
+      presets: [["@babel/preset-env", { modules: false }]]
     })
   ]
 };
