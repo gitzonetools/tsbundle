@@ -16,7 +16,7 @@
     "tsbundle": "cli.js"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.0.22",
+    "@gitzone/tsbuild": "^2.1.11",
     "@gitzone/tsrun": "^1.2.6",
     "@gitzone/tstest": "^1.0.15",
     "@pushrocks/tapbundle": "^3.0.7",
