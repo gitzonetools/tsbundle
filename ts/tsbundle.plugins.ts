@@ -1,3 +1,13 @@
+// pushrocks scope
+import * as smartlog from '@pushrocks/smartlog';
+import * as smartlogDestinationLocal from '@pushrocks/smartlog-destination-local';
+
+export {
+  smartlog,
+  smartlogDestinationLocal
+}
+
+// third party scope
 import * as rollup from 'rollup';
 import rollupBabel from 'rollup-plugin-babel';
 import rollupCommonjs from 'rollup-plugin-commonjs';

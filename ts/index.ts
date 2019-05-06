@@ -1,4 +1,8 @@
+import * as early from '@pushrocks/early';
+early.start('tsbundle');
 import * as plugins from './tsbundle.plugins';
+import { logger } from './tsbundle.logger';
+early.stop();
 
 const rollupOptions: plugins.rollup.RollupOptions = {
   input: `ts_web/index.ts`,
@@ -72,9 +76,11 @@ const rollupOptions: plugins.rollup.RollupOptions = {
 
 async function build() {
   // create a bundle
+  logger.log('info', `starting bundling now!`);
   const bundle = await plugins.rollup.rollup(rollupOptions);
   bundle.generate(rollupOptions.output);
   bundle.write(rollupOptions.output);
+  logger.log('ok', `Successfully bundled files!`);
 }
 
 build();
