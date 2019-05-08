@@ -1,7 +1,7 @@
 import * as early from '@pushrocks/early';
 early.start('tsbundle');
 import * as plugins from './tsbundle.plugins';
-import { logger } from './tsbundle.logger';
+import { logger } from './tsbundle.logging';
 early.stop();
 
 const rollupOptions: plugins.rollup.RollupOptions = {
