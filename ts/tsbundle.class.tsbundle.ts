@@ -16,7 +16,7 @@ export class TsBundle {
    */
   public async buildTest() {
     // create a bundle
-    logger.log('info', `starting bundling for TEST now!`);
+    logger.log('info', `bundling for TEST!`);
     const bundle = await plugins.rollup.rollup(this.optionsTest);
     bundle.generate(this.optionsTest.output);
     bundle.write(this.optionsTest.output);
@@ -28,7 +28,7 @@ export class TsBundle {
    */
   public async buildProduction() {
     // create a bundle
-    logger.log('info', `starting  for PRODUCTION now!`);
+    logger.log('info', `bundling for PRODUCTION!`);
     const bundle = await plugins.rollup.rollup(this.optionsProduction);
     bundle.generate(this.optionsProduction.output);
     bundle.write(this.optionsProduction.output);
