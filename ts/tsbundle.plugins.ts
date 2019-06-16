@@ -1,9 +1,17 @@
+// node native
+import * as path from 'path';
+
+export {
+  path
+};
+
 // pushrocks scope
 import * as smartcli from '@pushrocks/smartcli';
+import * as smartfile from '@pushrocks/smartfile';
 import * as smartlog from '@pushrocks/smartlog';
 import * as smartlogDestinationLocal from '@pushrocks/smartlog-destination-local';
 
-export { smartcli, smartlog, smartlogDestinationLocal };
+export { smartcli, smartfile, smartlog, smartlogDestinationLocal };
 
 // third party scope
 import * as rollup from 'rollup';
@@ -14,6 +22,8 @@ import rollupSourceMaps from 'rollup-plugin-sourcemaps';
 import { terser as rollupTerser } from 'rollup-plugin-terser';
 import rollupTypescript from 'rollup-plugin-typescript2';
 
+import * as htmlMinifier from 'html-minifier';
+
 export {
   rollup,
   rollupBabel,
@@ -21,5 +31,6 @@ export {
   rollupResolve,
   rollupSourceMaps,
   rollupTerser,
-  rollupTypescript
+  rollupTypescript,
+  htmlMinifier
 };

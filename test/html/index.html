@@ -1,0 +1,81 @@
+<!-- gitzone default -->
+<!-- made by Lossless GmbH -->
+<!-- checkout https://maintainedby.lossless.com for awesome OpenSource projects -->
+<html lang="en">
+  <head>
+    <!--Lets set some basic meta tags-->
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"
+    />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!--Lets make sure we recognize this as an PWA-->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!--Lets make sure we support older browsers-->
+    <script src=" https://unpkg.com/@webcomponents/webcomponentsjs@^2/webcomponents-bundle.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!--Lets avoid a rescaling flicker due to default body margins-->
+    <style>
+      body {
+        margin: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+        body {
+          background: #303f9f;
+          font-family: 'Roboto', sans-serif;
+          color: #ffffff;
+        }
+
+        a {
+          color: #ffffff;
+          text-decoration: none;
+        }
+        .container {
+          width: 600px;
+          margin: auto;
+          margin-top: 100px;
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+          overflow: hidden;
+          border-radius: 3px;
+          background: #4357d9;
+        }
+        .header {
+          padding: 20px;
+          text-align: center;
+          font-size: 25px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .content {
+          padding: 20px;
+        }
+        .footer {
+          padding: 10px;
+          text-align: center;
+        }
+      </style>
+      <div class="container">
+        <div class="header">
+          We need JavaScript to run properly!
+        </div>
+        <div class="content">
+          This site is being built using lit-element (made by Google). This technology works with
+          JavaScript. Subsequently this website does not work as intended by Lossless GmbH without
+          JavaScript.
+        </div>
+      </div>
+      <div class="footer">
+        <a href="https://lossless.gmbh">Legal Info</a> |
+        <a href="https://lossless.gmbh/privacy">Privacy Policy</a>
+      </div>
+    </noscript>
+  </body>
+  <script defer src="./bundle.js"></script>
+</html>
