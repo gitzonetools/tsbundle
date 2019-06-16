@@ -21,7 +21,11 @@ export class HtmlHandler {
       minifyJS: true,
       sortAttributes: true,
       sortClassName: true,
-      removeAttributeQuotes: true
+      removeAttributeQuotes: true,
+      collapseWhitespace: true,
+      collapseInlineTagWhitespace: true,
+      removeComments: true  
+
     });
     plugins.smartfile.memory.toFsSync(minifiedHtml, this.targetFilePath);
   }

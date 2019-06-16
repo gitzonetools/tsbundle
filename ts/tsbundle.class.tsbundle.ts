@@ -19,7 +19,7 @@ export class TsBundle {
     logger.log('info', `bundling for TEST!`);
     const bundle = await plugins.rollup.rollup(this.optionsTest);
     bundle.generate(this.optionsTest.output);
-    bundle.write(this.optionsTest.output);
+    await bundle.write(this.optionsTest.output);
     logger.log('ok', `Successfully bundled files!`);
   }
 
@@ -31,7 +31,7 @@ export class TsBundle {
     logger.log('info', `bundling for PRODUCTION!`);
     const bundle = await plugins.rollup.rollup(this.optionsProduction);
     bundle.generate(this.optionsProduction.output);
-    bundle.write(this.optionsProduction.output);
+    await bundle.write(this.optionsProduction.output);
     logger.log('ok', `Successfully bundled files!`);
   }
 
