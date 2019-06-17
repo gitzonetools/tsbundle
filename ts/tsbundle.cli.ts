@@ -9,16 +9,14 @@ export const runCli = async () => {
     const tsbundle = new TsBundle();
     const htmlHandler = new HtmlHandler();
     switch (true) {
-      case argvArg.production:
+      case (argvArg.production) || process.env.CI:
         await tsbundle.buildProduction();
         await htmlHandler.minifyHtml();
         break;
       case argvArg.test:
+      default:
         await tsbundle.buildTest();
         await htmlHandler.copyHtml();
-        break;
-      default:
-        logger.log('error', `Can not determine build target environement. Please specify via --production or --test`)
         return;
     }
   });
