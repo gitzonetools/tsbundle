@@ -11,7 +11,7 @@ export class HtmlHandler {
 
   // copies the html
   public async copyHtml() {
-    if (!(await this.checkIfExists)) {
+    if (!(await this.checkIfExists())) {
       return;
     }
     await plugins.smartfile.fs.copy(this.sourceFilePath, this.targetFilePath);
@@ -19,7 +19,7 @@ export class HtmlHandler {
 
   // copies and minifies the html
   public async minifyHtml() {
-    if (!(await this.checkIfExists)) {
+    if (!(await this.checkIfExists())) {
       return;
     }
     const fileString = plugins.smartfile.fs.toStringSync(this.sourceFilePath);
