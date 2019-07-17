@@ -1,9 +1,7 @@
 // node native
 import * as path from 'path';
 
-export {
-  path
-};
+export { path };
 
 // pushrocks scope
 import * as smartcli from '@pushrocks/smartcli';

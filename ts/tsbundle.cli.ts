@@ -9,7 +9,7 @@ export const runCli = async () => {
     const tsbundle = new TsBundle();
     const htmlHandler = new HtmlHandler();
     switch (true) {
-      case (argvArg.production) || process.env.CI:
+      case argvArg.production || process.env.CI:
         await tsbundle.buildProduction();
         await htmlHandler.minifyHtml();
         break;

@@ -5,7 +5,7 @@ export class HtmlHandler {
   public sourceFilePath: string = plugins.path.join(paths.htmlDir, 'index.html');
   public targetFilePath: string = plugins.path.join(paths.distWebDir, 'index.html');
 
-  public async checkIfExists () {
+  public async checkIfExists() {
     return plugins.smartfile.fs.fileExists(this.sourceFilePath);
   }
 
@@ -14,10 +14,7 @@ export class HtmlHandler {
     if (!(await this.checkIfExists)) {
       return;
     }
-    await plugins.smartfile.fs.copy(
-      this.sourceFilePath,
-      this.targetFilePath
-    );
+    await plugins.smartfile.fs.copy(this.sourceFilePath, this.targetFilePath);
   }
 
   // copies and minifies the html
@@ -34,8 +31,7 @@ export class HtmlHandler {
       removeAttributeQuotes: true,
       collapseWhitespace: true,
       collapseInlineTagWhitespace: true,
-      removeComments: true  
-
+      removeComments: true
     });
     plugins.smartfile.memory.toFsSync(minifiedHtml, this.targetFilePath);
   }
