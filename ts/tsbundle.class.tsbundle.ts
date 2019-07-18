@@ -2,49 +2,15 @@ import * as plugins from './tsbundle.plugins';
 import { logger } from './tsbundle.logging';
 
 export class TsBundle {
-  public optionsTest: plugins.rollup.RollupOptions = this.getBaseOptions();
-  public optionsProduction: plugins.rollup.RollupOptions = (() => {
-    const productionOptions = this.getBaseOptions();
-    productionOptions.plugins.push(plugins.rollupTerser());
-    return productionOptions;
-  })();
-
-  constructor() {}
-
-  /**
-   * creates a bundle for the test enviroment
-   */
-  public async buildTest() {
-    // create a bundle
-    logger.log('info', `bundling for TEST!`);
-    const bundle = await plugins.rollup.rollup(this.optionsTest);
-    bundle.generate(this.optionsTest.output);
-    await bundle.write(this.optionsTest.output);
-    logger.log('ok', `Successfully bundled files!`);
-  }
-
-  /**
-   * creates a bundle for the production environment
-   */
-  public async buildProduction() {
-    // create a bundle
-    logger.log('info', `bundling for PRODUCTION!`);
-    const bundle = await plugins.rollup.rollup(this.optionsProduction);
-    bundle.generate(this.optionsProduction.output);
-    await bundle.write(this.optionsProduction.output);
-    logger.log('ok', `Successfully bundled files!`);
-  }
-
   /**
    * the basic default options for rollup
    */
-  public getBaseOptions() {
+  public getBaseOptions(fromArg: string = `ts_web/index.ts`, toArg: string = 'dist_web/bundle.js') {
     const baseOptions: plugins.rollup.RollupOptions = {
-      input: `ts_web/index.ts`,
+      input: fromArg,
       output: {
         name: 'tsbundle',
-        // file: 'dist_web/bundle.js',
-        file: 'dist_web/bundle.js',
+        file: toArg,
         format: 'iife',
         sourcemap: true
       },
@@ -82,7 +48,7 @@ export class TsBundle {
 
         // Resolve source maps to the original source
         plugins.rollupSourceMaps(),
-        plugins.rollupBabel({
+        /*plugins.rollupBabel({
           runtimeHelpers: true,
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
           babelrc: false,
@@ -105,9 +71,45 @@ export class TsBundle {
               }
             ]
           ]
-        })
+        })*/
       ]
     };
     return baseOptions;
+  }
+
+  public getOptionsTest(fromArg: string, toArg: string): plugins.rollup.RollupOptions {
+    return this.getBaseOptions();
+  }
+
+  public getOptionsProduction(fromArg: string, toArg: string): plugins.rollup.RollupOptions {
+    const productionOptions = this.getBaseOptions();
+    productionOptions.plugins.push(plugins.rollupTerser());
+    return productionOptions;
+  }
+
+  constructor() {}
+
+  /**
+   * creates a bundle for the test enviroment
+   */
+  public async buildTest(fromArg: string, toArg: string) {
+    // create a bundle
+    logger.log('info', `bundling for TEST!`);
+    const bundle = await plugins.rollup.rollup(this.getOptionsTest(fromArg, toArg));
+    bundle.generate(this.getOptionsTest(fromArg, toArg).output);
+    await bundle.write(this.getOptionsTest(fromArg, toArg).output);
+    logger.log('ok', `Successfully bundled files!`);
+  }
+
+  /**
+   * creates a bundle for the production environment
+   */
+  public async buildProduction(fromArg: string, toArg: string) {
+    // create a bundle
+    logger.log('info', `bundling for PRODUCTION!`);
+    const bundle = await plugins.rollup.rollup(this.getOptionsProduction(fromArg, toArg));
+    bundle.generate(this.getOptionsProduction(fromArg, toArg).output);
+    await bundle.write(this.getOptionsProduction(fromArg, toArg).output);
+    logger.log('ok', `Successfully bundled files!`);
   }
 }

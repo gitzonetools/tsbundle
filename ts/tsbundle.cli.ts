@@ -10,16 +10,18 @@ export const runCli = async () => {
     const htmlHandler = new HtmlHandler();
     switch (true) {
       case argvArg.production || process.env.CI:
-        await tsbundle.buildProduction();
+        await tsbundle.buildProduction(null, null);
         await htmlHandler.minifyHtml();
         break;
       case argvArg.test:
       default:
-        await tsbundle.buildTest();
+        await tsbundle.buildTest(null, null);
         await htmlHandler.copyHtml();
         return;
     }
   });
+
+
 
   tsBundleCli.startParse();
 };
