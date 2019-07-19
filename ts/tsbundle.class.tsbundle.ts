@@ -6,6 +6,9 @@ export class TsBundle {
    * the basic default options for rollup
    */
   public getBaseOptions(fromArg: string = `ts_web/index.ts`, toArg: string = 'dist_web/bundle.js') {
+    logger.log('info', `from: ${fromArg}`);
+    logger.log('info', `to: ${toArg}`);
+
     const baseOptions: plugins.rollup.RollupOptions = {
       input: fromArg,
       output: {
@@ -87,7 +90,9 @@ export class TsBundle {
     return productionOptions;
   }
 
-  constructor() {}
+  constructor() {
+    // Nothing here
+  }
 
   /**
    * creates a bundle for the test enviroment
@@ -95,9 +100,10 @@ export class TsBundle {
   public async buildTest(fromArg: string, toArg: string) {
     // create a bundle
     logger.log('info', `bundling for TEST!`);
-    const bundle = await plugins.rollup.rollup(this.getOptionsTest(fromArg, toArg));
-    bundle.generate(this.getOptionsTest(fromArg, toArg).output);
-    await bundle.write(this.getOptionsTest(fromArg, toArg).output);
+    const buildOptions = this.getOptionsTest(fromArg, toArg);
+    const bundle = await plugins.rollup.rollup(buildOptions);
+    bundle.generate(buildOptions.output);
+    await bundle.write(buildOptions.output);
     logger.log('ok', `Successfully bundled files!`);
   }
 
@@ -107,9 +113,10 @@ export class TsBundle {
   public async buildProduction(fromArg: string, toArg: string) {
     // create a bundle
     logger.log('info', `bundling for PRODUCTION!`);
-    const bundle = await plugins.rollup.rollup(this.getOptionsProduction(fromArg, toArg));
-    bundle.generate(this.getOptionsProduction(fromArg, toArg).output);
-    await bundle.write(this.getOptionsProduction(fromArg, toArg).output);
+    const buildOptions = this.getOptionsProduction(fromArg, toArg);
+    const bundle = await plugins.rollup.rollup(buildOptions);
+    bundle.generate(buildOptions.output);
+    await bundle.write(buildOptions.output);
     logger.log('ok', `Successfully bundled files!`);
   }
 }

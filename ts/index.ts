@@ -10,3 +10,6 @@ early.stop();
 if (process.env.CLI_CALL) {
   runCli();
 }
+
+// lets make this usable programmatically
+export * from './tsbundle.class.tsbundle';
