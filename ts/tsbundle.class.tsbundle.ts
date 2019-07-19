@@ -81,11 +81,11 @@ export class TsBundle {
   }
 
   public getOptionsTest(fromArg: string, toArg: string): plugins.rollup.RollupOptions {
-    return this.getBaseOptions();
+    return this.getBaseOptions(fromArg, toArg);
   }
 
   public getOptionsProduction(fromArg: string, toArg: string): plugins.rollup.RollupOptions {
-    const productionOptions = this.getBaseOptions();
+    const productionOptions = this.getBaseOptions(fromArg, toArg);
     productionOptions.plugins.push(plugins.rollupTerser());
     return productionOptions;
   }
