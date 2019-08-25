@@ -50,7 +50,7 @@ export class TsBundle {
         }),
 
         // Resolve source maps to the original source
-        plugins.rollupSourceMaps(),
+        plugins.rollupSourceMaps()
         /*plugins.rollupBabel({
           runtimeHelpers: true,
           extensions: ['.js', '.jsx', '.ts', '.tsx'],

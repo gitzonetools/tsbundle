@@ -21,7 +21,5 @@ export const runCli = async () => {
     }
   });
 
-
-
   tsBundleCli.startParse();
 };

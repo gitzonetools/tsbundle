@@ -19,9 +19,9 @@
     "@gitzone/tsbuild": "^2.1.11",
     "@gitzone/tsrun": "^1.2.6",
     "@gitzone/tstest": "^1.0.15",
-    "@pushrocks/tapbundle": "^3.0.7",
+    "@pushrocks/tapbundle": "^3.0.13",
     "@types/node": "^12.6.6",
-    "tslint": "^5.11.0",
+    "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.15.0"
   },
   "dependencies": {
@@ -51,6 +51,7 @@
     "ts_web/*",
     "dist/*",
     "dist_web/*",
+    "dist_ts_web/*",
     "assets/*",
     "cli.js",
     "npmextra.json",
