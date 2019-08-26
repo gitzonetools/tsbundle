@@ -16,11 +16,11 @@
     "tsbundle": "cli.js"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.11",
-    "@gitzone/tsrun": "^1.2.6",
+    "@gitzone/tsbuild": "^2.1.17",
+    "@gitzone/tsrun": "^1.2.8",
     "@gitzone/tstest": "^1.0.15",
     "@pushrocks/tapbundle": "^3.0.13",
-    "@types/node": "^12.6.6",
+    "@types/node": "^12.7.2",
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.15.0"
   },
