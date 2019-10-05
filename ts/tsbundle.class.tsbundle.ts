@@ -86,7 +86,12 @@ export class TsBundle {
 
   public getOptionsProduction(fromArg: string, toArg: string): plugins.rollup.RollupOptions {
     const productionOptions = this.getBaseOptions(fromArg, toArg);
-    productionOptions.plugins.push(plugins.rollupTerser());
+    productionOptions.plugins.push(plugins.rollupTerser({
+      compress: true,
+      mangle: false,
+      toplevel: false,
+      keep_classnames: true
+    }));
     return productionOptions;
   }
 
