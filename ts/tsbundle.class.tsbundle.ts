@@ -90,7 +90,8 @@ export class TsBundle {
       compress: true,
       mangle: false,
       toplevel: false,
-      keep_classnames: true
+      keep_classnames: true,
+      sourcemap: true
     }));
     return productionOptions;
   }
