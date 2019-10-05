@@ -88,10 +88,8 @@ export class TsBundle {
     const productionOptions = this.getBaseOptions(fromArg, toArg);
     productionOptions.plugins.push(plugins.rollupTerser({
       compress: true,
-      mangle: false,
-      toplevel: false,
-      keep_classnames: true,
-      sourcemap: true
+      mangle: true,
+      sourcemap: false
     }));
     return productionOptions;
   }
