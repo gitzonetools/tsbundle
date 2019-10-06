@@ -89,7 +89,7 @@ export class TsBundle {
     productionOptions.plugins.push(plugins.rollupTerser({
       compress: true,
       mangle: true,
-      sourcemap: false
+      sourcemap: true
     }));
     return productionOptions;
   }
