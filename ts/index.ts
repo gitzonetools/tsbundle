@@ -7,9 +7,8 @@ import { logger } from './tsbundle.logging';
 import { runCli } from './tsbundle.cli';
 early.stop();
 
-if (process.env.CLI_CALL) {
-  runCli();
-}
-
 // lets make this usable programmatically
 export * from './tsbundle.class.tsbundle';
+export {
+  runCli
+};
