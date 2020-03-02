@@ -33,7 +33,7 @@ export class TsBundle {
               experimentalDecorators: true,
               inlineSourceMap: true,
               noEmitOnError: true,
-              lib: ['es2017', 'dom'],
+              lib: ['esnext', 'dom'],
               target: 'es2017',
               noImplicitAny: false
             }
