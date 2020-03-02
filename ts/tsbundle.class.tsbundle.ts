@@ -106,8 +106,8 @@ export class TsBundle {
     logger.log('info', `bundling for TEST!`);
     const buildOptions = this.getOptionsTest(fromArg, toArg);
     const bundle = await plugins.rollup.rollup(buildOptions);
-    bundle.generate(buildOptions.output);
-    await bundle.write(buildOptions.output);
+    bundle.generate(buildOptions.output as plugins.rollup.OutputOptions);
+    await bundle.write(buildOptions.output as plugins.rollup.OutputOptions);
     logger.log('ok', `Successfully bundled files!`);
   }
 
@@ -119,8 +119,8 @@ export class TsBundle {
     logger.log('info', `bundling for PRODUCTION!`);
     const buildOptions = this.getOptionsProduction(fromArg, toArg);
     const bundle = await plugins.rollup.rollup(buildOptions);
-    bundle.generate(buildOptions.output);
-    await bundle.write(buildOptions.output);
+    bundle.generate(buildOptions.output as plugins.rollup.OutputOptions);
+    await bundle.write(buildOptions.output as plugins.rollup.OutputOptions);
     logger.log('ok', `Successfully bundled files!`);
   }
 }
