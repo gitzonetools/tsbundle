@@ -34,7 +34,7 @@ export class TsBundle {
               inlineSourceMap: true,
               noEmitOnError: true,
               lib: ['esnext', 'dom'],
-              target: 'es2017',
+              target: 'es2018',
               noImplicitAny: false
             }
           }
