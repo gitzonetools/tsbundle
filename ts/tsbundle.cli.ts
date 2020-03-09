@@ -31,7 +31,7 @@ export const runCli = async () => {
         break;
       case argvArg.test:
       default:
-        await tsbundle.buildTest(argvArg.from, argvArg.to);
+        await tsbundle.buildTest('./ts_web/index.ts', './dist_ts_web/bundle.js');
         // await htmlHandler.copyHtml();
         return;
     }
