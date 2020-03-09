@@ -10,15 +10,15 @@ export class HtmlHandler {
   }
 
   // copies the html
-  public async copyHtml() {
+  public async copyHtml(targetPathArg = this.targetFilePath) {
     if (!(await this.checkIfExists())) {
       return;
     }
-    await plugins.smartfile.fs.copy(this.sourceFilePath, this.targetFilePath);
+    await plugins.smartfile.fs.copy(this.sourceFilePath, targetPathArg);
   }
 
   // copies and minifies the html
-  public async minifyHtml() {
+  public async minifyHtml(targetPathArg = this.targetFilePath) {
     if (!(await this.checkIfExists())) {
       return;
     }
@@ -33,6 +33,6 @@ export class HtmlHandler {
       collapseInlineTagWhitespace: true,
       removeComments: true
     });
-    plugins.smartfile.memory.toFsSync(minifiedHtml, this.targetFilePath);
+    plugins.smartfile.memory.toFsSync(minifiedHtml, targetPathArg);
   }
 }
