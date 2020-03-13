@@ -25,19 +25,14 @@ export class TsBundle {
       plugins: [
         // Compile TypeScript files
         plugins.rollupTypescript({
-          useTsconfigDeclarationDir: true,
-          tsconfigOverride: {
-            compilerOptions: {
-              declaration: true,
-              emitDecoratorMetadata: true,
-              experimentalDecorators: true,
-              inlineSourceMap: true,
-              noEmitOnError: true,
-              lib: ['esnext', 'dom'],
-              target: 'es2018',
-              noImplicitAny: false
-            }
-          }
+          declaration: false,
+          emitDecoratorMetadata: true,
+          experimentalDecorators: true,
+          inlineSourceMap: true,
+          noEmitOnError: true,
+          lib: ['esnext', 'dom'],
+          noImplicitAny: false,
+          target: 'es2018'
         }),
         // Allow node_modules resolution, so you can use 'external' to control
         // which external modules to include in the bundle
