@@ -10,6 +10,4 @@ early.stop();
 // lets make this usable programmatically
 export * from './tsbundle.class.tsbundle';
 export * from './tsbundle.htmlhandler';
-export {
-  runCli
-};
+export { runCli };

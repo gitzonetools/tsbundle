@@ -5,7 +5,10 @@ export class TsBundle {
   /**
    * the basic default options for rollup
    */
-  public getBaseOptions(fromArg: string = `ts_web/index.ts`, toArg: string = 'dist_bundle/bundle.js') {
+  public getBaseOptions(
+    fromArg: string = `ts_web/index.ts`,
+    toArg: string = 'dist_bundle/bundle.js'
+  ) {
     logger.log('info', `from: ${fromArg}`);
     logger.log('info', `to: ${toArg}`);
 
@@ -81,11 +84,13 @@ export class TsBundle {
 
   public getOptionsProduction(fromArg: string, toArg: string): plugins.rollup.RollupOptions {
     const productionOptions = this.getBaseOptions(fromArg, toArg);
-    productionOptions.plugins.push(plugins.rollupTerser({
-      compress: true,
-      mangle: true,
-      sourcemap: true
-    }));
+    productionOptions.plugins.push(
+      plugins.rollupTerser({
+        compress: true,
+        mangle: true,
+        sourcemap: true
+      })
+    );
     return productionOptions;
   }
 
