@@ -5,7 +5,7 @@ export class TsBundle {
   /**
    * the basic default options for rollup
    */
-  public getBaseOptions(fromArg: string = `ts_web/index.ts`, toArg: string = 'dist_ts_web/bundle.js') {
+  public getBaseOptions(fromArg: string = `ts_web/index.ts`, toArg: string = 'dist_bundle/bundle.js') {
     logger.log('info', `from: ${fromArg}`);
     logger.log('info', `to: ${toArg}`);
 
