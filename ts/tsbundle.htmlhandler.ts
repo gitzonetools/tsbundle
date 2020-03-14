@@ -3,7 +3,7 @@ import * as paths from './tsbundle.paths';
 
 export class HtmlHandler {
   public sourceFilePath: string = plugins.path.join(paths.htmlDir, 'index.html');
-  public targetFilePath: string = plugins.path.join(paths.distWebDir, 'index.html');
+  public targetFilePath: string = plugins.path.join(paths.distServeDir, 'index.html');
 
   public async checkIfExists() {
     return plugins.smartfile.fs.fileExists(this.sourceFilePath);
