@@ -28,7 +28,7 @@ export class TsBundle {
       plugins: [
         // Compile TypeScript files
         plugins.rollupTypescript({
-          allowSyntheticDefaultImports: true,
+          include: plugins.path.parse(fromArg).dir ? plugins.path.parse(fromArg).dir + '/**/*.ts' : '**/*.ts',
           declaration: false,
           emitDecoratorMetadata: true,
           experimentalDecorators: true,
