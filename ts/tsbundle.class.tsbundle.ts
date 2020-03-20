@@ -28,6 +28,7 @@ export class TsBundle {
       plugins: [
         // Compile TypeScript files
         plugins.rollupTypescript({
+          allowSyntheticDefaultImports: true,
           declaration: false,
           emitDecoratorMetadata: true,
           experimentalDecorators: true,
