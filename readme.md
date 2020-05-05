@@ -22,10 +22,41 @@ Use TypeScript for best in class intellisense.
 
 tsbundle will bundle modern JavaScript websites in an Google Bot conformant way so things like AdSense do work.
 
-> MIT licensed | **&copy;** [Lossless GmbH](https://lossless.gmbh)
-> | By using this npm module you agree to our [privacy policy](https://lossless.gmbH/privacy.html)
+tsbundle supports two modes of usage: CLI and API usage.
 
-[![repo-footer](https://gitzone.gitlab.io/assets/repo-footer.svg)](https://maintainedby.lossless.com)
+### CLI
+
+```shell
+# Note: This is code that belongs into your terminal ;)
+# Install the tool for cli usage
+
+# Globally
+npm install -g @gitzone/tsbundle
+
+# Locally for use in your pacakge.json
+npm install --save-dev @gitzone/tsbundle
+
+# then use it
+tsbundle --from="./ts/index.ts" --to="dist/bundle.js"
+
+## note you can call tsbundle without arguments. Default values are --from="./ts_web/index.ts" --to="dist_bundle/bundle.js"
+## You can use --production to enable minification using terser
+```
+
+## API
+You are using TypeScript, aren't you? Most of the stuff is apparent from the IDE intellisense.
+
+```typescript
+import { TsBundle } from '@gitozne/tsbundle';
+
+const myTsBundleInstance = new TsBundle();
+
+const run = async () => {
+  await myTsBundleInstance.buildTest('./from/my.ts', './to/mybundle.js')
+  // OR
+  await myTsBundleInstance.buildProduction('./from/my.ts', './to/mybundle.js')
+}
+```
 
 ## Contribution
 
