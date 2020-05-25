@@ -15,6 +15,7 @@ export { smartcli, smartfile, smartlog, smartlogDestinationLocal };
 import * as rollup from 'rollup';
 import rollupBabel from 'rollup-plugin-babel';
 import rollupCommonjs from '@rollup/plugin-commonjs';
+import rollupJson from '@rollup/plugin-json';
 import rollupResolve from '@rollup/plugin-node-resolve';
 import rollupSourceMaps from 'rollup-plugin-sourcemaps';
 import { terser as rollupTerser } from 'rollup-plugin-terser';
@@ -26,6 +27,7 @@ export {
   rollup,
   rollupBabel,
   rollupCommonjs,
+  rollupJson,
   rollupResolve,
   rollupSourceMaps,
   rollupTerser,

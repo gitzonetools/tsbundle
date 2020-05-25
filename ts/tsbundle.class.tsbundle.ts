@@ -39,6 +39,7 @@ export class TsBundle {
           target: 'es2018',
           allowSyntheticDefaultImports: true
         }),
+        plugins.rollupJson(),
         // Allow node_modules resolution, so you can use 'external' to control
         // which external modules to include in the bundle
         // https://github.com/rollup/rollup-plugin-node-resolve#usage
