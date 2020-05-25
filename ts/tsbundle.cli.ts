@@ -37,6 +37,22 @@ export const runCli = async () => {
     }
   });
 
+  tsBundleCli.addCommand('npm').subscribe(async argvArg => {
+    const tsbundle = new TsBundle();
+    // const htmlHandler = new HtmlHandler();
+    switch (true) {
+      case argvArg.production || process.env.CI:
+        await tsbundle.buildProduction('./ts/index.ts', './dist_ts/bundle.js');
+        // await htmlHandler.minifyHtml();
+        break;
+      case argvArg.test:
+      default:
+        await tsbundle.buildTest('./ts/index.ts', './dist_ts/bundle.js');
+        // await htmlHandler.copyHtml();
+        return;
+    }
+  });
+
   tsBundleCli.addCommand('website').subscribe(async argvArg => {
     const tsbundle = new TsBundle();
     const htmlHandler = new HtmlHandler();
