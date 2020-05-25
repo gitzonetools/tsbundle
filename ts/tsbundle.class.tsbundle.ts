@@ -36,7 +36,8 @@ export class TsBundle {
           noEmitOnError: true,
           lib: ['esnext', 'dom', 'es2017.object'],
           noImplicitAny: false,
-          target: 'es2018'
+          target: 'es2018',
+          allowSyntheticDefaultImports: true
         }),
         // Allow node_modules resolution, so you can use 'external' to control
         // which external modules to include in the bundle
