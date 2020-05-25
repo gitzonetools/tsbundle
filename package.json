@@ -45,7 +45,8 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-sourcemaps": "^0.6.2",
     "rollup-plugin-terser": "^5.3.0",
-    "terser": "^4.7.0"
+    "terser": "^4.7.0",
+    "typescript": "^3.9.3"
   },
   "files": [
     "ts/**/*",
