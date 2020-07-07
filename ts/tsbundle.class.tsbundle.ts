@@ -18,17 +18,19 @@ export class TsBundle {
         name: 'tsbundle',
         file: toArg,
         format: 'iife',
-        sourcemap: true
+        sourcemap: true,
       },
       // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
       external: [],
       watch: {
-        include: ['src/**']
+        include: ['src/**'],
       },
       plugins: [
         // Compile TypeScript files
         plugins.rollupTypescript({
-          include: plugins.path.parse(fromArg).dir ? plugins.path.parse(fromArg).dir + '/**/*.ts' : '**/*.ts',
+          include: plugins.path.parse(fromArg).dir
+            ? plugins.path.parse(fromArg).dir + '/**/*.ts'
+            : '**/*.ts',
           declaration: false,
           emitDecoratorMetadata: true,
           experimentalDecorators: true,
@@ -37,7 +39,7 @@ export class TsBundle {
           lib: ['esnext', 'dom', 'es2017.object'],
           noImplicitAny: false,
           target: 'es2018',
-          allowSyntheticDefaultImports: true
+          allowSyntheticDefaultImports: true,
         }),
         plugins.rollupJson(),
         // Allow node_modules resolution, so you can use 'external' to control
@@ -47,7 +49,7 @@ export class TsBundle {
         plugins.rollupCommonjs({}),
 
         // Resolve source maps to the original source
-        plugins.rollupSourceMaps()
+        plugins.rollupSourceMaps(),
         /*plugins.rollupBabel({
           runtimeHelpers: true,
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -72,7 +74,7 @@ export class TsBundle {
             ]
           ]
         })*/
-      ]
+      ],
     };
     return baseOptions;
   }
@@ -87,7 +89,7 @@ export class TsBundle {
       plugins.rollupTerser({
         compress: true,
         mangle: true,
-        sourcemap: true
+        sourcemap: true,
       })
     );
     return productionOptions;
@@ -100,14 +102,26 @@ export class TsBundle {
   /**
    * creates a bundle for the test enviroment
    */
-  public async buildTest(fromArg: string, toArg: string) {
+  public async buildTest(
+    fromArg: string,
+    toArg: string,
+    bundlerArg: 'rollup' | 'parcel' = 'rollup'
+  ) {
     // create a bundle
-    logger.log('info', `bundling for TEST!`);
-    const buildOptions = this.getOptionsTest(fromArg, toArg);
-    const bundle = await plugins.rollup.rollup(buildOptions);
-    bundle.generate(buildOptions.output as plugins.rollup.OutputOptions);
-    await bundle.write(buildOptions.output as plugins.rollup.OutputOptions);
-    logger.log('ok', `Successfully bundled files!`);
+    switch (bundlerArg) {
+      case 'rollup':
+        logger.log('info', `bundling for TEST!`);
+        const buildOptions = this.getOptionsTest(fromArg, toArg);
+        const bundle = await plugins.rollup.rollup(buildOptions);
+        bundle.generate(buildOptions.output as plugins.rollup.OutputOptions);
+        await bundle.write(buildOptions.output as plugins.rollup.OutputOptions);
+        logger.log('ok', `Successfully bundled files!`);
+        break;
+      case 'parcel':
+        const parsedPath = plugins.path.parse(toArg);
+        const parcelInstance = new plugins.smartparcel.Parcel(fromArg, parsedPath.dir, parsedPath.base);
+        await parcelInstance.build();
+    }
   }
 
   /**

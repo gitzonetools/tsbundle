@@ -8,8 +8,9 @@ import * as smartcli from '@pushrocks/smartcli';
 import * as smartfile from '@pushrocks/smartfile';
 import * as smartlog from '@pushrocks/smartlog';
 import * as smartlogDestinationLocal from '@pushrocks/smartlog-destination-local';
+import * as smartparcel from '@pushrocks/smartparcel';
 
-export { smartcli, smartfile, smartlog, smartlogDestinationLocal };
+export { smartcli, smartfile, smartlog, smartlogDestinationLocal, smartparcel };
 
 // third party scope
 import * as rollup from 'rollup';
