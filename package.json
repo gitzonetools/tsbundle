@@ -9,8 +9,7 @@
   "license": "MIT",
   "scripts": {
     "test": "cd test && node ../cli.ts.js --production",
-    "build": "(tsbuild)",
-    "format": "(gitzone format)"
+    "build": "(tsbuild --web)"
   },
   "bin": {
     "tsbundle": "cli.js"
