@@ -17,8 +17,8 @@
   "devDependencies": {
     "@gitzone/tsbuild": "^2.1.25",
     "@gitzone/tsrun": "^1.2.12",
-    "@gitzone/tstest": "^1.0.43",
-    "@pushrocks/tapbundle": "^3.2.9",
+    "@gitzone/tstest": "^1.0.52",
+    "@pushrocks/tapbundle": "^3.2.14",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.15.0"
   },
@@ -31,10 +31,10 @@
     "@babel/runtime": "^7.11.2",
     "@pushrocks/early": "^3.0.6",
     "@pushrocks/smartcli": "^3.0.12",
-    "@pushrocks/smartfile": "^8.0.0",
-    "@pushrocks/smartlog": "^2.0.36",
+    "@pushrocks/smartfile": "^8.0.8",
+    "@pushrocks/smartlog": "^2.0.39",
     "@pushrocks/smartlog-destination-local": "^8.0.8",
-    "@pushrocks/smartparcel": "^1.0.5",
+    "@pushrocks/smartparcel": "^1.0.9",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
@@ -46,7 +46,7 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-sourcemaps": "^0.6.2",
     "rollup-plugin-terser": "^6.1.0",
-    "typescript": "^3.9.7"
+    "typescript": "^4.2.3"
   },
   "files": [
     "ts/**/*",
