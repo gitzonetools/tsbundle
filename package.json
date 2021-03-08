@@ -1,6 +1,6 @@
 {
   "name": "@gitzone/tsbundle",
-  "version": "1.0.78",
+  "version": "1.0.79",
   "private": false,
   "description": "a bundler using rollup for painless bundling of web projects",
   "main": "dist_ts/index.js",
