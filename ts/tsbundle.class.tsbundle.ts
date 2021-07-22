@@ -126,7 +126,9 @@ export class TsBundle {
   /**
    * creates a bundle for the production environment
    */
-  public async buildProduction(fromArg: string, toArg: string) {
+  public async buildProduction(cwdArg: string, fromArg: string, toArg: string) {
+    process.chdir(cwdArg);
+    console.log(process.cwd())
     // create a bundle
     logger.log('info', `bundling for PRODUCTION!`);
     const buildOptions = this.getOptionsProduction(fromArg, toArg);

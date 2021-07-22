@@ -8,7 +8,7 @@
   "author": "Lossless GmbH",
   "license": "MIT",
   "scripts": {
-    "test": "cd test && node ../cli.ts.js --production",
+    "test": "(tstest test/) && (cd test && node ../cli.ts.js --production)",
     "build": "(tsbuild --web)"
   },
   "bin": {

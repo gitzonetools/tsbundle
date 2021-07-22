@@ -10,7 +10,7 @@ export const runCli = async () => {
     // const htmlHandler = new HtmlHandler();
     switch (true) {
       case argvArg.production || process.env.CI:
-        await tsbundle.buildProduction(argvArg.from, argvArg.to);
+        await tsbundle.buildProduction(process.cwd(), argvArg.from, argvArg.to);
         // await htmlHandler.minifyHtml();
         break;
       case argvArg.test:
@@ -26,7 +26,7 @@ export const runCli = async () => {
     // const htmlHandler = new HtmlHandler();
     switch (true) {
       case argvArg.production || process.env.CI:
-        await tsbundle.buildProduction('./ts_web/index.ts', './dist_bundle/bundle.js');
+        await tsbundle.buildProduction(process.cwd(), './ts_web/index.ts', './dist_bundle/bundle.js');
         // await htmlHandler.minifyHtml();
         break;
       case argvArg.test:
@@ -42,7 +42,7 @@ export const runCli = async () => {
     // const htmlHandler = new HtmlHandler();
     switch (true) {
       case argvArg.production || process.env.CI:
-        await tsbundle.buildProduction('./ts/index.ts', './dist_bundle/bundle.js');
+        await tsbundle.buildProduction(process.cwd(), './ts/index.ts', './dist_bundle/bundle.js');
         // await htmlHandler.minifyHtml();
         break;
       case argvArg.test:
@@ -58,7 +58,7 @@ export const runCli = async () => {
     const htmlHandler = new HtmlHandler();
     switch (true) {
       case argvArg.production || process.env.CI:
-        await tsbundle.buildProduction('./ts_web/index.ts', './dist_serve/bundle.js');
+        await tsbundle.buildProduction(process.cwd(), './ts_web/index.ts', './dist_serve/bundle.js');
         await htmlHandler.minifyHtml();
         break;
       case argvArg.test:
