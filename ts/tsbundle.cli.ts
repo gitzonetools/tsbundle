@@ -15,7 +15,7 @@ export const runCli = async () => {
         break;
       case argvArg.test:
       default:
-        await tsbundle.buildTest(argvArg.from, argvArg.to);
+        await tsbundle.buildTest(process.cwd(), argvArg.from, argvArg.to, 'rollup');
         // await htmlHandler.copyHtml();
         return;
     }
@@ -31,7 +31,7 @@ export const runCli = async () => {
         break;
       case argvArg.test:
       default:
-        await tsbundle.buildTest('./ts_web/index.ts', './dist_bundle/bundle.js');
+        await tsbundle.buildTest(process.cwd(), './ts_web/index.ts', './dist_bundle/bundle.js', 'rollup');
         // await htmlHandler.copyHtml();
         return;
     }
@@ -47,7 +47,7 @@ export const runCli = async () => {
         break;
       case argvArg.test:
       default:
-        await tsbundle.buildTest('./ts/index.ts', './dist_bundle/bundle.js');
+        await tsbundle.buildTest(process.cwd(), './ts/index.ts', './dist_bundle/bundle.js', 'rollup');
         // await htmlHandler.copyHtml();
         return;
     }
@@ -63,7 +63,7 @@ export const runCli = async () => {
         break;
       case argvArg.test:
       default:
-        await tsbundle.buildTest('./ts_web/index.ts', './dist_serve/bundle.js');
+        await tsbundle.buildTest(process.cwd(), './ts_web/index.ts', './dist_serve/bundle.js', 'rollup');
         await htmlHandler.copyHtml();
         return;
     }
