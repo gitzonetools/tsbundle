@@ -37,7 +37,7 @@
     "@pushrocks/smartparcel": "^1.0.9",
     "@pushrocks/smartpromise": "^3.1.6",
     "@pushrocks/smartspawn": "^2.0.9",
-    "@rollup/plugin-commonjs": "^19.0.1",
+    "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-typescript": "^8.2.5",
