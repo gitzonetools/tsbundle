@@ -115,7 +115,7 @@ export class TsBundleProcess {
         bundle.generate(buildOptions.output as plugins.rollup.OutputOptions);
         await bundle.write(buildOptions.output as plugins.rollup.OutputOptions);
         logger.log('ok', `Successfully bundled files!`);
-        break;
+        process.exit(0);
       case 'parcel':
         const parsedPath = plugins.path.parse(toArg);
         const parcelInstance = new plugins.smartparcel.Parcel(fromArg, parsedPath.dir, parsedPath.base);
@@ -134,6 +134,7 @@ export class TsBundleProcess {
     bundle.generate(buildOptions.output as plugins.rollup.OutputOptions);
     await bundle.write(buildOptions.output as plugins.rollup.OutputOptions);
     logger.log('ok', `Successfully bundled files!`);
+    process.exit(0);
   }
 }
 
