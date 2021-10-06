@@ -40,6 +40,7 @@ export class TsBundleProcess {
           noImplicitAny: false,
           target: 'es2018',
           allowSyntheticDefaultImports: true,
+          importsNotUsedAsValues: 'preserve',
         }),
         plugins.rollupJson(),
         // Allow node_modules resolution, so you can use 'external' to control
