@@ -50,31 +50,7 @@ export class TsBundleProcess {
         plugins.rollupCommonjs({}),
 
         // Resolve source maps to the original source
-        plugins.rollupSourceMaps(),
-        /*plugins.rollupBabel({
-          runtimeHelpers: true,
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
-          babelrc: false,
-          presets: [
-            [
-              '@babel/preset-env',
-              {
-                modules: false,
-                targets: {
-                  chrome: '41'
-                }
-              }
-            ]
-          ],
-          plugins: [
-            [
-              '@babel/plugin-transform-runtime',
-              {
-                regenerator: true
-              }
-            ]
-          ]
-        })*/
+        plugins.rollupSourceMaps()
       ],
     };
     return baseOptions;

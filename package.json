@@ -34,7 +34,7 @@
     "@pushrocks/smartfile": "^9.0.5",
     "@pushrocks/smartlog": "^2.0.44",
     "@pushrocks/smartlog-destination-local": "^8.0.8",
-    "@pushrocks/smartparcel": "^1.0.12",
+    "@pushrocks/smartparcel": "^1.0.13",
     "@pushrocks/smartpromise": "^3.1.7",
     "@pushrocks/smartspawn": "^2.0.9",
     "@rollup/plugin-commonjs": "^21.0.2",
