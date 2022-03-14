@@ -7,7 +7,7 @@ function sealed(constructor: Function) {
 
 @sealed
 class BugReport {
-  type = "report";
+  type = 'report';
   title: string;
 
   constructor(t: string) {

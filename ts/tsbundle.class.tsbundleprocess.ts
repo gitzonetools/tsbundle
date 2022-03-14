@@ -1,5 +1,5 @@
-import * as plugins from './tsbundle.plugins';
-import { logger } from './tsbundle.logging';
+import * as plugins from './tsbundle.plugins.js';
+import { logger } from './tsbundle.logging.js';
 
 export class TsBundleProcess {
   /**
@@ -27,7 +27,7 @@ export class TsBundleProcess {
       },
       plugins: [
         // Compile TypeScript files
-        plugins.rollupTypescript({
+        (plugins.rollupTypescript as any)({
           include: plugins.path.parse(fromArg).dir
             ? plugins.path.parse(fromArg).dir + '/**/*.ts'
             : '**/*.ts',
@@ -36,21 +36,21 @@ export class TsBundleProcess {
           experimentalDecorators: true,
           inlineSourceMap: true,
           noEmitOnError: true,
-          lib: ['esnext', 'dom', 'es2017.object'],
+          lib: ['dom'],
           noImplicitAny: false,
-          target: 'es2018',
+          target: 'es2020',
           allowSyntheticDefaultImports: true,
           importsNotUsedAsValues: 'preserve',
         }),
-        plugins.rollupJson(),
+        (plugins.rollupJson as any)(),
         // Allow node_modules resolution, so you can use 'external' to control
         // which external modules to include in the bundle
         // https://github.com/rollup/rollup-plugin-node-resolve#usage
         plugins.rollupResolve(),
-        plugins.rollupCommonjs({}),
+        (plugins.rollupCommonjs as any)({}),
 
         // Resolve source maps to the original source
-        plugins.rollupSourceMaps()
+        plugins.rollupSourceMaps(),
       ],
     };
     return baseOptions;
@@ -65,7 +65,7 @@ export class TsBundleProcess {
     productionOptions.plugins.push(
       plugins.rollupTerser({
         compress: true,
-        mangle: true
+        mangle: true,
       })
     );
     return productionOptions;
@@ -95,7 +95,11 @@ export class TsBundleProcess {
         process.exit(0);
       case 'parcel':
         const parsedPath = plugins.path.parse(toArg);
-        const parcelInstance = new plugins.smartparcel.Parcel(fromArg, parsedPath.dir, parsedPath.base);
+        const parcelInstance = new plugins.smartparcel.Parcel(
+          fromArg,
+          parsedPath.dir,
+          parsedPath.base
+        );
         await parcelInstance.build();
     }
   }
@@ -122,13 +126,17 @@ const run = async () => {
   console.log(`to: ${process.env.tsbundleTo}`);
   console.log(`mode: ${process.env.tsbundleMode}`);
   process.chdir(process.env.tsbundleCwd);
-  console.log(`switched to ${process.cwd()}`)
+  console.log(`switched to ${process.cwd()}`);
   const tsbundleProcessInstance = new TsBundleProcess();
   if (process.env.tsbundleMode === 'test') {
-    tsbundleProcessInstance.buildTest(process.env.tsbundleFrom, process.env.tsbundleTo, process.env.tsbundleBundler as 'rollup' | 'parcel');
+    tsbundleProcessInstance.buildTest(
+      process.env.tsbundleFrom,
+      process.env.tsbundleTo,
+      process.env.tsbundleBundler as 'rollup' | 'parcel'
+    );
   } else {
     tsbundleProcessInstance.buildProduction(process.env.tsbundleFrom, process.env.tsbundleTo);
   }
-}
+};
 
 run();

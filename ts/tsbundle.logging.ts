@@ -1,4 +1,4 @@
-import * as plugins from './tsbundle.plugins';
+import * as plugins from './tsbundle.plugins.js';
 
 export const logger = new plugins.smartlog.Smartlog({
   logContext: {
@@ -7,9 +7,9 @@ export const logger = new plugins.smartlog.Smartlog({
     containerName: 'Some Containername',
     environment: 'local',
     runtime: 'node',
-    zone: 'gitzone'
+    zone: 'gitzone',
   },
-  minimumLogLevel: 'silly'
+  minimumLogLevel: 'silly',
 });
 
 logger.addLogDestination(new plugins.smartlogDestinationLocal.DestinationLocal());

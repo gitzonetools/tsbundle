@@ -8,11 +8,21 @@ import * as smartcli from '@pushrocks/smartcli';
 import * as smartfile from '@pushrocks/smartfile';
 import * as smartlog from '@pushrocks/smartlog';
 import * as smartlogDestinationLocal from '@pushrocks/smartlog-destination-local';
+import * as smartpath from '@pushrocks/smartpath';
 import * as smartparcel from '@pushrocks/smartparcel';
 import * as smartpromise from '@pushrocks/smartpromise';
 import * as smartspawn from '@pushrocks/smartspawn';
 
-export { smartcli, smartfile, smartlog, smartlogDestinationLocal, smartparcel, smartpromise, smartspawn };
+export {
+  smartcli,
+  smartfile,
+  smartlog,
+  smartlogDestinationLocal,
+  smartpath,
+  smartparcel,
+  smartpromise,
+  smartspawn,
+};
 
 // third party scope
 import * as rollup from 'rollup';
@@ -35,5 +45,5 @@ export {
   rollupSourceMaps,
   rollupTerser,
   rollupTypescript,
-  htmlMinifier
+  htmlMinifier,
 };

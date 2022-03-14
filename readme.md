@@ -8,13 +8,20 @@ a bundler using rollup for painless bundling of web projects
 * [docs (typedoc)](https://gitzone.gitlab.io/tsbundle/)
 
 ## Status for master
-[![pipeline status](https://gitlab.com/gitzone/tsbundle/badges/master/pipeline.svg)](https://gitlab.com/gitzone/tsbundle/commits/master)
-[![coverage report](https://gitlab.com/gitzone/tsbundle/badges/master/coverage.svg)](https://gitlab.com/gitzone/tsbundle/commits/master)
-[![npm downloads per month](https://img.shields.io/npm/dm/@gitzone/tsbundle.svg)](https://www.npmjs.com/package/@gitzone/tsbundle)
-[![Known Vulnerabilities](https://snyk.io/test/npm/@gitzone/tsbundle/badge.svg)](https://snyk.io/test/npm/@gitzone/tsbundle)
-[![TypeScript](https://img.shields.io/badge/TypeScript->=%203.x-blue.svg)](https://nodejs.org/dist/latest-v10.x/docs/api/)
-[![node](https://img.shields.io/badge/node->=%2010.x.x-blue.svg)](https://nodejs.org/dist/latest-v10.x/docs/api/)
-[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-prettier-ff69b4.svg)](https://prettier.io/)
+
+Status Category | Status Badge
+-- | --
+GitLab Pipelines | [![pipeline status](https://gitlab.com/gitzone/tsbundle/badges/master/pipeline.svg)](https://lossless.cloud)
+GitLab Pipline Test Coverage | [![coverage report](https://gitlab.com/gitzone/tsbundle/badges/master/coverage.svg)](https://lossless.cloud)
+npm | [![npm downloads per month](https://badgen.net/npm/dy/@gitzone/tsbundle)](https://lossless.cloud)
+Snyk | [![Known Vulnerabilities](https://badgen.net/snyk/gitzone/tsbundle)](https://lossless.cloud)
+TypeScript Support | [![TypeScript](https://badgen.net/badge/TypeScript/>=%203.x/blue?icon=typescript)](https://lossless.cloud)
+node Support | [![node](https://img.shields.io/badge/node->=%2010.x.x-blue.svg)](https://nodejs.org/dist/latest-v10.x/docs/api/)
+Code Style | [![Code Style](https://badgen.net/badge/style/prettier/purple)](https://lossless.cloud)
+PackagePhobia (total standalone install weight) | [![PackagePhobia](https://badgen.net/packagephobia/install/@gitzone/tsbundle)](https://lossless.cloud)
+PackagePhobia (package size on registry) | [![PackagePhobia](https://badgen.net/packagephobia/publish/@gitzone/tsbundle)](https://lossless.cloud)
+BundlePhobia (total size when bundled) | [![BundlePhobia](https://badgen.net/bundlephobia/minzip/@gitzone/tsbundle)](https://lossless.cloud)
+Platform support | [![Supports Windows 10](https://badgen.net/badge/supports%20Windows%2010/yes/green?icon=windows)](https://lossless.cloud) [![Supports Mac OS X](https://badgen.net/badge/supports%20Mac%20OS%20X/yes/green?icon=apple)](https://lossless.cloud)
 
 ## Usage
 
@@ -44,6 +51,7 @@ tsbundle --from="./ts/index.ts" --to="dist/bundle.js"
 ```
 
 ## API
+
 You are using TypeScript, aren't you? Most of the stuff is apparent from the IDE intellisense.
 
 ```typescript
@@ -52,10 +60,10 @@ import { TsBundle } from '@gitozne/tsbundle';
 const myTsBundleInstance = new TsBundle();
 
 const run = async () => {
-  await myTsBundleInstance.buildTest('./from/my.ts', './to/mybundle.js')
+  await myTsBundleInstance.buildTest('./from/my.ts', './to/mybundle.js');
   // OR
-  await myTsBundleInstance.buildProduction('./from/my.ts', './to/mybundle.js')
-}
+  await myTsBundleInstance.buildProduction('./from/my.ts', './to/mybundle.js');
+};
 ```
 
 ## Contribution

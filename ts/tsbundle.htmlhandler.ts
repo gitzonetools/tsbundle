@@ -1,5 +1,5 @@
-import * as plugins from './tsbundle.plugins';
-import * as paths from './tsbundle.paths';
+import * as plugins from './tsbundle.plugins.js';
+import * as paths from './tsbundle.paths.js';
 
 export class HtmlHandler {
   public sourceFilePath: string = plugins.path.join(paths.htmlDir, 'index.html');
@@ -31,7 +31,7 @@ export class HtmlHandler {
       removeAttributeQuotes: true,
       collapseWhitespace: true,
       collapseInlineTagWhitespace: true,
-      removeComments: true
+      removeComments: true,
     });
     plugins.smartfile.memory.toFsSync(minifiedHtml, targetPathArg);
   }
