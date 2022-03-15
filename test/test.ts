@@ -9,7 +9,8 @@ tap.test('should bundle test', async () => {
     process.cwd() + '/test',
     './ts_web/index.ts',
     './dist_manual/test.js',
-    'rollup'
+    'rollup',
+    {}
   );
 });
 
@@ -18,7 +19,9 @@ tap.test('should bundle production', async () => {
   await tsbundleInstance.buildProduction(
     process.cwd(),
     './test/ts_web/index.ts',
-    './test/dist_manual/production.js'
+    './test/dist_manual/production.js',
+    'rollup',
+    {}
   );
 });
 

@@ -44,16 +44,22 @@ export class TsBundleProcess {
           moduleResolution: 'node12',
           allowSyntheticDefaultImports: true,
           importsNotUsedAsValues: 'preserve',
-          ...argvArg && argvArg.skiplibcheck ? {
-            skipLibCheck: true
-          } : {},
-          ...argvArg && argvArg.allowimplicitany ? {
-            noImplicitAny: false
-          } : {},
-          ...argvArg && argvArg.commonjs ? {
-            module: 'commonjs',
-            moduleResolution: 'node',
-          } : {},
+          ...(argvArg && argvArg.skiplibcheck
+            ? {
+                skipLibCheck: true,
+              }
+            : {}),
+          ...(argvArg && argvArg.allowimplicitany
+            ? {
+                noImplicitAny: false,
+              }
+            : {}),
+          ...(argvArg && argvArg.commonjs
+            ? {
+                module: 'commonjs',
+                moduleResolution: 'node',
+              }
+            : {}),
         }),
         (plugins.rollupJson as any)(),
         // Allow node_modules resolution, so you can use 'external' to control
@@ -69,11 +75,19 @@ export class TsBundleProcess {
     return baseOptions;
   }
 
-  public getOptionsTest(fromArg: string, toArg: string, argvArg: any): plugins.rollup.RollupOptions {
+  public getOptionsTest(
+    fromArg: string,
+    toArg: string,
+    argvArg: any
+  ): plugins.rollup.RollupOptions {
     return this.getBaseOptions(fromArg, toArg, argvArg);
   }
 
-  public getOptionsProduction(fromArg: string, toArg: string, argvArg: any): plugins.rollup.RollupOptions {
+  public getOptionsProduction(
+    fromArg: string,
+    toArg: string,
+    argvArg: any
+  ): plugins.rollup.RollupOptions {
     const productionOptions = this.getBaseOptions(fromArg, toArg, argvArg);
     productionOptions.plugins.push(
       plugins.rollupTerser({
@@ -147,10 +161,14 @@ const run = async () => {
       process.env.tsbundleFrom,
       process.env.tsbundleTo,
       process.env.tsbundleBundler as 'rollup' | 'parcel',
-      process.env.tsbundleArgv
+      JSON.parse(process.env.tsbundleArgv)
     );
   } else {
-    tsbundleProcessInstance.buildProduction(process.env.tsbundleFrom, process.env.tsbundleTo, process.env.tsbundleArgv);
+    tsbundleProcessInstance.buildProduction(
+      process.env.tsbundleFrom,
+      process.env.tsbundleTo,
+      JSON.parse(process.env.tsbundleArgv)
+    );
   }
 };
 
