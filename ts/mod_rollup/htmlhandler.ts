@@ -1,5 +1,5 @@
-import * as plugins from './tsbundle.plugins.js';
-import * as paths from './tsbundle.paths.js';
+import * as plugins from './plugins.js';
+import * as paths from '../paths.js';
 
 export class HtmlHandler {
   public sourceFilePath: string = plugins.path.join(paths.htmlDir, 'index.html');

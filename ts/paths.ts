@@ -1,4 +1,4 @@
-import * as plugins from './tsbundle.plugins.js';
+import * as plugins from './plugins.js';
 
 export const cwd = process.cwd();
 export const packageDir = plugins.path.join(

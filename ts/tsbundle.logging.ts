@@ -1,4 +1,4 @@
-import * as plugins from './tsbundle.plugins.js';
+import * as plugins from './plugins.js';
 
 export const logger = new plugins.smartlog.Smartlog({
   logContext: {

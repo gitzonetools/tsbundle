@@ -1,5 +1,6 @@
-import * as plugins from './tsbundle.plugins.js';
-import { logger } from './tsbundle.logging.js';
+import * as plugins from './plugins.js';
+import * as interfaces from '../interfaces/index.js';
+import { logger } from '../tsbundle.logging.js';
 
 export class TsBundleProcess {
   /**
@@ -108,28 +109,16 @@ export class TsBundleProcess {
   public async buildTest(
     fromArg: string,
     toArg: string,
-    bundlerArg: 'rollup' | 'parcel' = 'rollup',
     argvArg: any
   ) {
     // create a bundle
-    switch (bundlerArg) {
-      case 'rollup':
-        logger.log('info', `bundling for TEST!`);
-        const buildOptions = this.getOptionsTest(fromArg, toArg, argvArg);
-        const bundle = await plugins.rollup.rollup(buildOptions);
-        bundle.generate(buildOptions.output as plugins.rollup.OutputOptions);
-        await bundle.write(buildOptions.output as plugins.rollup.OutputOptions);
-        logger.log('ok', `Successfully bundled files!`);
-        process.exit(0);
-      case 'parcel':
-        const parsedPath = plugins.path.parse(toArg);
-        const parcelInstance = new plugins.smartparcel.Parcel(
-          fromArg,
-          parsedPath.dir,
-          parsedPath.base
-        );
-        await parcelInstance.build();
-    }
+    logger.log('info', `bundling for TEST!`);
+    const buildOptions = this.getOptionsTest(fromArg, toArg, argvArg);
+    const bundle = await plugins.rollup.rollup(buildOptions);
+    bundle.generate(buildOptions.output as plugins.rollup.OutputOptions);
+    await bundle.write(buildOptions.output as plugins.rollup.OutputOptions);
+    logger.log('ok', `Successfully bundled files!`);
+    process.exit(0);
   }
 
   /**
@@ -149,25 +138,23 @@ export class TsBundleProcess {
 
 const run = async () => {
   console.log('running spawned compilation process');
-  console.log(`cwd: ${process.env.tsbundleCwd}`);
-  console.log(`from: ${process.env.tsbundleFrom}`);
-  console.log(`to: ${process.env.tsbundleTo}`);
-  console.log(`mode: ${process.env.tsbundleMode}`);
-  process.chdir(process.env.tsbundleCwd);
+  const transportOptions: interfaces.IEnvTransportOptions = JSON.parse(process.env.transportOptions);
+  console.log('bundling with rollup:');
+  console.log(transportOptions);
+  process.chdir(transportOptions.cwd);
   console.log(`switched to ${process.cwd()}`);
   const tsbundleProcessInstance = new TsBundleProcess();
-  if (process.env.tsbundleMode === 'test') {
+  if (transportOptions.mode === 'test') {
     tsbundleProcessInstance.buildTest(
-      process.env.tsbundleFrom,
-      process.env.tsbundleTo,
-      process.env.tsbundleBundler as 'rollup' | 'parcel',
-      JSON.parse(process.env.tsbundleArgv)
+      transportOptions.from,
+      transportOptions.to,
+      transportOptions.argv
     );
   } else {
     tsbundleProcessInstance.buildProduction(
-      process.env.tsbundleFrom,
-      process.env.tsbundleTo,
-      JSON.parse(process.env.tsbundleArgv)
+      transportOptions.from,
+      transportOptions.to,
+      transportOptions.argv
     );
   }
 };
