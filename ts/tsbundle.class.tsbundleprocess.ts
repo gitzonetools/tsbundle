@@ -7,7 +7,8 @@ export class TsBundleProcess {
    */
   public getBaseOptions(
     fromArg: string = `ts_web/index.ts`,
-    toArg: string = 'dist_bundle/bundle.js'
+    toArg: string = 'dist_bundle/bundle.js',
+    argvArg: any
   ) {
     logger.log('info', `from: ${fromArg}`);
     logger.log('info', `to: ${toArg}`);
@@ -39,8 +40,20 @@ export class TsBundleProcess {
           lib: ['dom'],
           noImplicitAny: false,
           target: 'es2020',
+          module: 'es2020',
+          moduleResolution: 'node12',
           allowSyntheticDefaultImports: true,
           importsNotUsedAsValues: 'preserve',
+          ...argvArg && argvArg.skiplibcheck ? {
+            skipLibCheck: true
+          } : {},
+          ...argvArg && argvArg.allowimplicitany ? {
+            noImplicitAny: false
+          } : {},
+          ...argvArg && argvArg.commonjs ? {
+            module: 'commonjs',
+            moduleResolution: 'node',
+          } : {},
         }),
         (plugins.rollupJson as any)(),
         // Allow node_modules resolution, so you can use 'external' to control
@@ -56,12 +69,12 @@ export class TsBundleProcess {
     return baseOptions;
   }
 
-  public getOptionsTest(fromArg: string, toArg: string): plugins.rollup.RollupOptions {
-    return this.getBaseOptions(fromArg, toArg);
+  public getOptionsTest(fromArg: string, toArg: string, argvArg: any): plugins.rollup.RollupOptions {
+    return this.getBaseOptions(fromArg, toArg, argvArg);
   }
 
-  public getOptionsProduction(fromArg: string, toArg: string): plugins.rollup.RollupOptions {
-    const productionOptions = this.getBaseOptions(fromArg, toArg);
+  public getOptionsProduction(fromArg: string, toArg: string, argvArg: any): plugins.rollup.RollupOptions {
+    const productionOptions = this.getBaseOptions(fromArg, toArg, argvArg);
     productionOptions.plugins.push(
       plugins.rollupTerser({
         compress: true,
@@ -81,13 +94,14 @@ export class TsBundleProcess {
   public async buildTest(
     fromArg: string,
     toArg: string,
-    bundlerArg: 'rollup' | 'parcel' = 'rollup'
+    bundlerArg: 'rollup' | 'parcel' = 'rollup',
+    argvArg: any
   ) {
     // create a bundle
     switch (bundlerArg) {
       case 'rollup':
         logger.log('info', `bundling for TEST!`);
-        const buildOptions = this.getOptionsTest(fromArg, toArg);
+        const buildOptions = this.getOptionsTest(fromArg, toArg, argvArg);
         const bundle = await plugins.rollup.rollup(buildOptions);
         bundle.generate(buildOptions.output as plugins.rollup.OutputOptions);
         await bundle.write(buildOptions.output as plugins.rollup.OutputOptions);
@@ -107,10 +121,10 @@ export class TsBundleProcess {
   /**
    * creates a bundle for the production environment
    */
-  public async buildProduction(fromArg: string, toArg: string) {
+  public async buildProduction(fromArg: string, toArg: string, argvArg: any) {
     // create a bundle
     logger.log('info', `bundling for PRODUCTION!`);
-    const buildOptions = this.getOptionsProduction(fromArg, toArg);
+    const buildOptions = this.getOptionsProduction(fromArg, toArg, argvArg);
     const bundle = await plugins.rollup.rollup(buildOptions);
     bundle.generate(buildOptions.output as plugins.rollup.OutputOptions);
     await bundle.write(buildOptions.output as plugins.rollup.OutputOptions);
@@ -132,10 +146,11 @@ const run = async () => {
     tsbundleProcessInstance.buildTest(
       process.env.tsbundleFrom,
       process.env.tsbundleTo,
-      process.env.tsbundleBundler as 'rollup' | 'parcel'
+      process.env.tsbundleBundler as 'rollup' | 'parcel',
+      process.env.tsbundleArgv
     );
   } else {
-    tsbundleProcessInstance.buildProduction(process.env.tsbundleFrom, process.env.tsbundleTo);
+    tsbundleProcessInstance.buildProduction(process.env.tsbundleFrom, process.env.tsbundleTo, process.env.tsbundleArgv);
   }
 };
 

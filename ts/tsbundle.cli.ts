@@ -10,12 +10,12 @@ export const runCli = async () => {
     // const htmlHandler = new HtmlHandler();
     switch (true) {
       case argvArg.production || process.env.CI:
-        await tsbundle.buildProduction(process.cwd(), argvArg.from, argvArg.to);
+        await tsbundle.buildProduction(process.cwd(), argvArg.from, argvArg.to, 'rollup', argvArg);
         // await htmlHandler.minifyHtml();
         break;
       case argvArg.test:
       default:
-        await tsbundle.buildTest(process.cwd(), argvArg.from, argvArg.to, 'rollup');
+        await tsbundle.buildTest(process.cwd(), argvArg.from, argvArg.to, 'rollup', argvArg);
         // await htmlHandler.copyHtml();
         return;
     }
@@ -29,7 +29,9 @@ export const runCli = async () => {
         await tsbundle.buildProduction(
           process.cwd(),
           './ts_web/index.ts',
-          './dist_bundle/bundle.js'
+          './dist_bundle/bundle.js',
+          'rollup',
+          argvArg
         );
         // await htmlHandler.minifyHtml();
         break;
@@ -39,7 +41,8 @@ export const runCli = async () => {
           process.cwd(),
           './ts_web/index.ts',
           './dist_bundle/bundle.js',
-          'rollup'
+          'rollup',
+          argvArg
         );
         // await htmlHandler.copyHtml();
         return;
@@ -51,7 +54,13 @@ export const runCli = async () => {
     // const htmlHandler = new HtmlHandler();
     switch (true) {
       case argvArg.production || process.env.CI:
-        await tsbundle.buildProduction(process.cwd(), './ts/index.ts', './dist_bundle/bundle.js');
+        await tsbundle.buildProduction(
+          process.cwd(),
+          './ts/index.ts',
+          './dist_bundle/bundle.js',
+          'rollup',
+          argvArg
+        );
         // await htmlHandler.minifyHtml();
         break;
       case argvArg.test:
@@ -60,7 +69,8 @@ export const runCli = async () => {
           process.cwd(),
           './ts/index.ts',
           './dist_bundle/bundle.js',
-          'rollup'
+          'rollup',
+          argvArg
         );
         // await htmlHandler.copyHtml();
         return;
@@ -75,7 +85,9 @@ export const runCli = async () => {
         await tsbundle.buildProduction(
           process.cwd(),
           './ts_web/index.ts',
-          './dist_serve/bundle.js'
+          './dist_serve/bundle.js',
+          'rollup',
+          argvArg
         );
         await htmlHandler.minifyHtml();
         break;
@@ -85,7 +97,8 @@ export const runCli = async () => {
           process.cwd(),
           './ts_web/index.ts',
           './dist_serve/bundle.js',
-          'rollup'
+          'rollup',
+          argvArg
         );
         await htmlHandler.copyHtml();
         return;
