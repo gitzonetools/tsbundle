@@ -55,15 +55,15 @@ const run = async () => {
   if (transportOptions.mode === 'test') {
     console.log('building for test:')
     tsbundleProcessInstance.buildTest(
-      plugins.path.join(process.cwd(), transportOptions.from),
-      plugins.path.join(process.cwd(), transportOptions.to),
+      plugins.smartpath.transform.makeAbsolute(transportOptions.from, process.cwd()),
+      plugins.smartpath.transform.makeAbsolute(transportOptions.to, process.cwd()),
       transportOptions.argv
     );
   } else {
     console.log('building for production:')
     tsbundleProcessInstance.buildProduction(
-      transportOptions.from,
-      transportOptions.to,
+      plugins.smartpath.transform.makeAbsolute(transportOptions.from, process.cwd()),
+      plugins.smartpath.transform.makeAbsolute(transportOptions.to, process.cwd()),
       transportOptions.argv
     );
   }

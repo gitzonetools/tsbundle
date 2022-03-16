@@ -10,13 +10,13 @@
   "license": "MIT",
   "scripts": {
     "test": "npm run build && (tstest test/) && (cd test && node ../cli.js --production)",
-    "build": "(tsbuild --web)"
+    "build": "(tsbuild --web --allowimplicitany)"
   },
   "bin": {
     "tsbundle": "cli.js"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.48",
+    "@gitzone/tsbuild": "^2.1.56",
     "@gitzone/tsrun": "^1.2.31",
     "@gitzone/tstest": "^1.0.67",
     "@pushrocks/tapbundle": "^5.0.2",
@@ -24,19 +24,19 @@
     "tslint-config-prettier": "^1.15.0"
   },
   "dependencies": {
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.17.7",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/plugin-proposal-decorators": "^7.17.2",
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
-    "@babel/runtime": "^7.17.2",
+    "@babel/runtime": "^7.17.7",
     "@pushrocks/early": "^3.0.6",
     "@pushrocks/smartcli": "^3.0.14",
     "@pushrocks/smartfile": "^9.0.6",
     "@pushrocks/smartlog": "^2.0.44",
     "@pushrocks/smartlog-destination-local": "^8.0.8",
     "@pushrocks/smartparcel": "^1.0.13",
-    "@pushrocks/smartpath": "^5.0.4",
+    "@pushrocks/smartpath": "^5.0.5",
     "@pushrocks/smartpromise": "^3.1.7",
     "@pushrocks/smartspawn": "^2.0.9",
     "@rollup/plugin-commonjs": "^21.0.2",
