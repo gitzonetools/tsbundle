@@ -33,6 +33,9 @@ export class TsBundleProcess {
     argvArg: any
   ) {
     // create a bundle
+    console.log('esbuild specific:');
+    console.log(`from: ${fromArg}`);
+    console.log((`to: ${toArg}`));
     const esbuild = await plugins.esbuild.build({
       entryPoints: [fromArg],
       bundle: true,
