@@ -47,7 +47,7 @@ export class TsBundleProcess {
 const run = async () => {
   console.log('running spawned compilation process');
   const transportOptions: interfaces.IEnvTransportOptions = JSON.parse(process.env.transportOptions);
-  console.log('bundling with esbuild:');
+  console.log('=======> ESBUILD');
   console.log(transportOptions);
   process.chdir(transportOptions.cwd);
   console.log(`switched to ${process.cwd()}`);
