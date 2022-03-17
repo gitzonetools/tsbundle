@@ -20,6 +20,8 @@ export class TsBundleProcess {
     const esbuild = await plugins.esbuild.build({
       entryPoints: [fromArg],
       bundle: true,
+      sourcemap: true,
+      format: 'esm',
       outfile: toArg
     });
   }
@@ -39,6 +41,9 @@ export class TsBundleProcess {
     const esbuild = await plugins.esbuild.build({
       entryPoints: [fromArg],
       bundle: true,
+      sourcemap: true,
+      format: 'esm',
+      minify: true,
       outfile: toArg
     });
   }
