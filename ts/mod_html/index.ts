@@ -11,18 +11,18 @@ export class HtmlHandler {
 
   // copies the html
   public async copyHtml(fromArg: string = this.defaultFromPath, toArg: string = this.defaultToPath) {
-    if (!(await this.checkIfExists())) {
+    if (await this.checkIfExists()) {
       console.log(`${fromArg} replaces file at ${toArg}`);
     }
     fromArg = plugins.smartpath.transform.toAbsolute(fromArg, paths.cwd) as string;
     toArg = plugins.smartpath.transform.toAbsolute(toArg, paths.cwd) as string;
     await plugins.smartfile.fs.copy(fromArg, toArg);
-    console.log(`html copy replacement succeeded`);
+    console.log(`html copy succeeded!`);
   }
 
   // copies and minifies the html
   public async minifyHtml(fromArg: string = this.defaultFromPath, toArg: string = this.defaultToPath) {
-    if (!(await this.checkIfExists())) {
+    if (await this.checkIfExists()) {
       console.log(`${fromArg} replaces file at ${toArg}`);
     }
     fromArg = plugins.smartpath.transform.toAbsolute(fromArg, paths.cwd) as string;
@@ -39,5 +39,6 @@ export class HtmlHandler {
       removeComments: true,
     });
     await plugins.smartfile.memory.toFs(minifiedHtml, toArg);
+    console.log(`html minification succeeded!`);
   }
 }
