@@ -9,5 +9,5 @@ early.stop();
 
 // lets make this usable programmatically
 export * from './tsbundle.class.tsbundle.js';
-export * from './mod_rollup/htmlhandler.js';
+export * from './mod_html/index.js';
 export { runCli };

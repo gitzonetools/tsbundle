@@ -10,8 +10,6 @@ import rollupSourceMaps from 'rollup-plugin-sourcemaps';
 import { terser as rollupTerser } from 'rollup-plugin-terser';
 import rollupTypescript from '@rollup/plugin-typescript';
 
-import * as htmlMinifier from 'html-minifier';
-
 export {
   rollup,
   rollupBabel,
@@ -21,5 +19,4 @@ export {
   rollupSourceMaps,
   rollupTerser,
   rollupTypescript,
-  htmlMinifier,
 };

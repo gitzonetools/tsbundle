@@ -28,8 +28,9 @@ export class TsBundle {
       from: fromArg,
       to: toArg,
       mode: argvArg && argvArg.production ? 'production' : 'test',
-      argv: argvArg ? argvArg : {
-        bundler: 'esbuild'
+      argv:  {
+        bundler: 'esbuild',
+        ...argvArg
       } 
     }
     const threadsimple = new plugins.smartspawn.ThreadSimple(
