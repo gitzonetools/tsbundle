@@ -22,6 +22,7 @@ export class TsBundleProcess {
       bundle: true,
       sourcemap: true,
       format: 'esm',
+      target: 'es2020',
       outfile: toArg
     });
   }
@@ -43,6 +44,7 @@ export class TsBundleProcess {
       bundle: true,
       sourcemap: true,
       format: 'esm',
+      target: 'es2020',
       minify: true,
       outfile: toArg
     });
