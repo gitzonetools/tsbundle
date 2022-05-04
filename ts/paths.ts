@@ -8,3 +8,4 @@ export const packageDir = plugins.path.join(
 export const htmlDir = plugins.path.join(cwd, './html');
 export const distServeDir = plugins.path.join(cwd, './dist_serve');
 export const assetsDir = plugins.path.join(packageDir, 'assets');
+export const tsconfigPath = plugins.path.join(packageDir, './tsconfig.json');

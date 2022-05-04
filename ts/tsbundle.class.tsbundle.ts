@@ -15,12 +15,6 @@ export class TsBundle {
       if (argvArg.bundler === 'esbuild') {
         return './mod_esbuild/index.child.js'
       }
-      if (argvArg.bundler === 'parcel') {
-        return './mod_parcel/index.child.js'
-      }
-      if (argvArg.bundler === 'rollup') {
-        return './mod_rollup/index.child.js'
-      }
       return './mod_esbuild/index.child.js'
     }
     const transportOptions: interfaces.IEnvTransportOptions = {

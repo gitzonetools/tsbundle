@@ -1,4 +1,5 @@
 import * as plugins from './plugins.js';
+import * as paths from '../paths.js';
 import * as interfaces from '../interfaces/index.js';
 import { logger } from '../tsbundle.logging.js';
 
@@ -23,7 +24,8 @@ export class TsBundleProcess {
       sourcemap: true,
       format: 'esm',
       target: 'es2020',
-      outfile: toArg
+      outfile: toArg,
+      tsconfig: paths.tsconfigPath
     });
   }
 
