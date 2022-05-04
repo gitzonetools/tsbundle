@@ -48,7 +48,8 @@ export class TsBundleProcess {
       format: 'esm',
       target: 'es2020',
       minify: true,
-      outfile: toArg
+      outfile: toArg,
+      tsconfig: paths.tsconfigPath
     });
   }
 }
