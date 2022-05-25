@@ -16,13 +16,13 @@
     "tsbundle": "cli.js"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.59",
-    "@gitzone/tsrun": "^1.2.31",
-    "@gitzone/tstest": "^1.0.69",
-    "@pushrocks/tapbundle": "^5.0.2"
+    "@gitzone/tsbuild": "^2.1.61",
+    "@gitzone/tsrun": "^1.2.34",
+    "@gitzone/tstest": "^1.0.71",
+    "@pushrocks/tapbundle": "^5.0.3"
   },
   "dependencies": {
-    "@pushrocks/early": "^3.0.6",
+    "@pushrocks/early": "^4.0.2",
     "@pushrocks/smartcli": "^3.0.14",
     "@pushrocks/smartfile": "^9.0.6",
     "@pushrocks/smartlog": "^2.0.44",
@@ -31,10 +31,10 @@
     "@pushrocks/smartpromise": "^3.1.7",
     "@pushrocks/smartspawn": "^2.0.9",
     "@types/html-minifier": "^4.0.2",
-    "@types/node": "^17.0.21",
+    "@types/node": "^17.0.35",
     "esbuild": "0.14.27",
     "html-minifier": "^4.0.0",
-    "typescript": "4.7.0"
+    "typescript": "^4.7.2"
   },
   "files": [
     "ts/**/*",
