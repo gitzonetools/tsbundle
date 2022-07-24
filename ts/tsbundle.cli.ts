@@ -13,8 +13,6 @@ export const runCli = async () => {
 
   tsBundleCli.addCommand('element').subscribe(async (argvArg) => {
     const tsbundle = new TsBundle();
-    const htmlHandler = new HtmlHandler();
-    // const htmlHandler = new HtmlHandler();
     await tsbundle.build(
       process.cwd(),
       './ts_web/index.ts',
@@ -43,7 +41,14 @@ export const runCli = async () => {
       './dist_serve/bundle.js',
       argvArg
     );
-    await htmlHandler.minifyHtml('./html/index.html', './dist_serve/index.html')
+    const htmlFiles = await plugins.smartfile.fs.listFiles('./html', /\.html/);
+    for (const htmlFile of htmlFiles) {
+      await htmlHandler.processHtml({
+        from: `./html/${htmlFile}`,
+        to: `./dist_serve/${htmlFile}`,
+        minify: true,
+      });
+    }
   });
 
   tsBundleCli.startParse();

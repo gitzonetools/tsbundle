@@ -10,35 +10,38 @@ export class HtmlHandler {
   }
 
   // copies the html
-  public async copyHtml(fromArg: string = this.defaultFromPath, toArg: string = this.defaultToPath) {
-    if (await this.checkIfExists()) {
-      console.log(`${fromArg} replaces file at ${toArg}`);
+  public async processHtml(optionsArg: {
+    from?: string;
+    to?: string;
+    minify?: boolean;
+  }) {
+    optionsArg = {
+      ... {
+        from: this.defaultFromPath,
+        to: this.defaultToPath,
+        minify: false,
+      },
+      ...optionsArg
     }
-    fromArg = plugins.smartpath.transform.toAbsolute(fromArg, paths.cwd) as string;
-    toArg = plugins.smartpath.transform.toAbsolute(toArg, paths.cwd) as string;
-    await plugins.smartfile.fs.copy(fromArg, toArg);
-    console.log(`html copy succeeded!`);
-  }
-
-  // copies and minifies the html
-  public async minifyHtml(fromArg: string = this.defaultFromPath, toArg: string = this.defaultToPath) {
     if (await this.checkIfExists()) {
-      console.log(`${fromArg} replaces file at ${toArg}`);
+      console.log(`${optionsArg.from} replaces file at ${optionsArg.to}`);
     }
-    fromArg = plugins.smartpath.transform.toAbsolute(fromArg, paths.cwd) as string;
-    toArg = plugins.smartpath.transform.toAbsolute(toArg, paths.cwd) as string;
-    const fileString = plugins.smartfile.fs.toStringSync(fromArg);
-    const minifiedHtml = plugins.htmlMinifier.minify(fileString, {
-      minifyCSS: true,
-      minifyJS: true,
-      sortAttributes: true,
-      sortClassName: true,
-      removeAttributeQuotes: true,
-      collapseWhitespace: true,
-      collapseInlineTagWhitespace: true,
-      removeComments: true,
-    });
-    await plugins.smartfile.memory.toFs(minifiedHtml, toArg);
-    console.log(`html minification succeeded!`);
+    optionsArg.from = plugins.smartpath.transform.toAbsolute(optionsArg.from, paths.cwd) as string;
+    optionsArg.to = plugins.smartpath.transform.toAbsolute(optionsArg.to, paths.cwd) as string;
+    let fileString = plugins.smartfile.fs.toStringSync(optionsArg.from);
+    if (optionsArg.minify) {
+      fileString = plugins.htmlMinifier.minify(fileString, {
+        minifyCSS: true,
+        minifyJS: true,
+        sortAttributes: true,
+        sortClassName: true,
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+        collapseInlineTagWhitespace: true,
+        removeComments: true,
+      });
+    }
+    await plugins.smartfile.memory.toFs(fileString, optionsArg.to);
+    console.log(`html processing succeeded!`);
   }
 }
