@@ -5,7 +5,7 @@ import { logger } from './tsbundle.logging.js';
 
 export const runCli = async () => {
   const tsBundleCli = new plugins.smartcli.Smartcli();
-  tsBundleCli.standardTask().subscribe(async (argvArg) => {
+  tsBundleCli.standardCommand().subscribe(async (argvArg) => {
     const tsbundle = new TsBundle();
     await tsbundle.build(process.cwd(), argvArg.from, argvArg.to, argvArg);
     return;
